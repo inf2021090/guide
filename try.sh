@@ -3,7 +3,7 @@
 # Assemble and preprocess all the source files
 for filename in text/ch*.txt; do
     [ -e "$filename" ] || continue
-    pandoc --lua-filter=lua/labs.lua "$filename" --to markdown |
+    pandoc --lua-filter=lua/labs.lua --lua-filter=lua/Pro.lua "$filename" --to markdown |
         pandoc --top-level-division=chapter --citeproc --to latex > "latex/$(basename "$filename" .txt).tex"
 done
 
